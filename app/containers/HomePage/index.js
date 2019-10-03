@@ -25,6 +25,7 @@ import RestoreWalletModal from 'components/RestoreWalletModal';
 import SubHeader from 'components/SubHeader';
 import PageFooter from 'components/PageFooter';
 import { Content } from 'components/PageFooter/sticky';
+import firebase from '../../firebaseConfig';
 
 /* Header: */
 import Header from 'containers/Header';
@@ -69,6 +70,12 @@ import {
   loadWallet,
 } from './actions';
 
+/* TODO login works, but maybe we should import it this way?
+import {
+  login,
+  logout,
+} from './loginActions';
+*/
 import {
   makeSelectIsShowGenerateWallet,
   makeSelectGenerateWalletLoading,
@@ -99,8 +106,41 @@ import {
 
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    };
+
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+
+  logout() {
+    firebase.auth().signOut().then(() => {
+      this.setState({
+        user: null
+      });
+    });
+  }
+
+  login() {
+      var provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider).then(result => {
+        const user = result.user;
+        this.setState({
+          user
+        });
+      });
+  }
+
   componentDidMount() {
     this.props.onLoadWallet();
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user });
+      }
+    });
   }
 
   render() {
@@ -245,16 +285,24 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
     return (
       <div>
+          {this.state.user ? (
         <Content>
           <Header />
           <SubHeader {...subHeaderProps} />
-          <GenerateWalletModal {...generateWalletProps} />
-          <RestoreWalletModal {...restoreWalletModalProps} />
-          <AddressView {...addressViewProps} />
-          <SendToken {...sendTokenProps} />
-          <TokenChooser {...tokenChooserProps} />
+            <GenerateWalletModal {...generateWalletProps} />
+            <RestoreWalletModal {...restoreWalletModalProps} />
+            <AddressView {...addressViewProps} />
+            <SendToken {...sendTokenProps} />
+            <TokenChooser {...tokenChooserProps} />
         </Content>
-        <PageFooter />
+          ) : (
+          <Content>
+          <h2>Login</h2>
+          <button onClick={this.login}>Login</button>
+          </Content>
+          )}
+
+          <PageFooter />
       </div>
     );
   }

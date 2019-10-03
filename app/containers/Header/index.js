@@ -13,7 +13,9 @@ import { compose } from 'redux';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { Row, Col } from 'antd';
-
+import {
+  Link,
+} from 'react-router-dom'
 
 import NetworkIndicator from 'components/NetworkIndicator';
 import Logo from 'components/Logo';
@@ -72,11 +74,54 @@ function Header(props) {
     onLoadNetwork,
   };
 
+  const HorizontalMenuList = styled.ul`
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  `;
+
+  const HorizontalMenuItem = styled.li`
+    float: left;
+    a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    a:hover {
+      background-color: #111;
+    }
+
+    .active {
+      background-color: #4CAF50;
+    }
+  `;
+
   return (
     <HeaderWrapped className="clearfix">
       <Row type="flex" align="middle" justify="space-between" style={{ backgroundColor: '#fff' }}>
         <Col sm={{ span: 6, offset: 1 }} xs={24}>
           <Logo />
+        </Col>
+        <Col>
+          <HorizontalMenuList>
+            <HorizontalMenuItem>
+              <Link to="/settings">Settings</Link>
+            </HorizontalMenuItem>
+            <HorizontalMenuItem>
+              <Link to="/lists">Lists</Link>
+            </HorizontalMenuItem>
+            <HorizontalMenuItem>
+              <Link to="/">Wallet</Link>
+            </HorizontalMenuItem>
+            <HorizontalMenuItem>
+              <Link to="/chat">Chat</Link>              
+            </HorizontalMenuItem>
+          </HorizontalMenuList>
         </Col>
         <Col sm={{ span: 8, offset: 2 }} xs={24}>
           <Row type="flex" align="middle" justify="center">

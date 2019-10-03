@@ -13,9 +13,12 @@
 
 import React from 'react';
 // import { Helmet } from 'react-helmet';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+import Settings from 'components/Settings'
+import ListPage from 'containers/ListPage/Loadable'
+import Chat from 'components/Chat'
 // import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -23,10 +26,16 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   render() {
     return (
       <div>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route component={HomePage} />
-        </Switch>
+        <BrowserRouter>
+          <div>
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/settings" component={Settings} />
+              <Route path="/lists" component={ListPage} />
+              <Route path="/chat" component={Chat} />
+            </Switch>
+          </div>
+        </BrowserRouter>
       </div>
     );
   }
