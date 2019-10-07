@@ -2,6 +2,13 @@
 
 ## Ethereum wallet with ERC20 support - A web wallet 
 
+## Docker Stuff
+
+docker build . -t shopr-wallet
+docker run -p 8000:80 shopr-wallet
+docker tag shopr-wallet shopar.azurecr.io/shopr/wallet
+docker push shopar.azurecr.io/shopr/wallet
+
 ![eth-hot-wallet ethereum wallet preview](https://paullaux.github.io/eth-hot-wallet/docs/images/eth-hot-wallet-ethereum.PNG)
 
 https://eth-hot-wallet.com

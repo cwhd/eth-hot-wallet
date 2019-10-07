@@ -50,6 +50,7 @@ const HeaderWrapped = styled.header`
   padding: 0;
   width: 100%;
   font-size: 16px;
+  background-color: #dc3545;
 `;
 
 function Header(props) {
@@ -79,7 +80,7 @@ function Header(props) {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #dc3545;
   `;
 
   const HorizontalMenuItem = styled.li`
@@ -93,33 +94,34 @@ function Header(props) {
     }
 
     a:hover {
-      background-color: #111;
+      color: #111;
     }
 
     .active {
-      background-color: #4CAF50;
+      color: #4CAF50;
     }
   `;
 
+  
   return (
     <HeaderWrapped className="clearfix">
-      <Row type="flex" align="middle" justify="space-between" style={{ backgroundColor: '#fff' }}>
+      <Row type="flex" align="middle" justify="space-between" style={{ backgroundColor: '#dc3545' }}>
         <Col sm={{ span: 6, offset: 1 }} xs={24}>
           <Logo />
         </Col>
         <Col>
           <HorizontalMenuList>
             <HorizontalMenuItem>
-              <Link to="/settings">Settings</Link>
+              <Link to="https://shopr-list.azurewebsites.net/chat">Chat</Link>              
             </HorizontalMenuItem>
             <HorizontalMenuItem>
-              <Link to="/lists">Lists</Link>
+              <Link to="https://shopr-list.azurewebsites.net">Lists</Link>
             </HorizontalMenuItem>
             <HorizontalMenuItem>
-              <Link to="/">Wallet</Link>
+              <Link to="https://shopr-wallet.azurewebsites.net">Wallet</Link>
             </HorizontalMenuItem>
             <HorizontalMenuItem>
-              <Link to="/chat">Chat</Link>              
+              <Link to="https://shopr-list.azurewebsites.net/settings">Settings</Link>
             </HorizontalMenuItem>
           </HorizontalMenuList>
         </Col>
