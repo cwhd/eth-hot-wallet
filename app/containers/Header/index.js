@@ -84,7 +84,7 @@ function Header(props) {
   `;
 
   const HorizontalMenuItem = styled.li`
-    float: left;
+    float: right;
     a {
       display: block;
       color: white;
@@ -102,14 +102,11 @@ function Header(props) {
     }
   `;
 
-  
   return (
-    <HeaderWrapped className="clearfix">
-      <Row type="flex" align="middle" justify="space-between" style={{ backgroundColor: '#dc3545' }}>
-        <Col sm={{ span: 6, offset: 1 }} xs={24}>
+    <HeaderWrapped>
           <Logo />
-        </Col>
-        <Col>
+          <NetworkIndicator {...networkIndicatorProps} />
+          <NetworkMenu {...networkMenuProps} />
           <HorizontalMenuList>
             <HorizontalMenuItem>
               <Link to="https://shopr-list.azurewebsites.net/chat">Chat</Link>              
@@ -124,14 +121,6 @@ function Header(props) {
               <Link to="https://shopr-list.azurewebsites.net/settings">Settings</Link>
             </HorizontalMenuItem>
           </HorizontalMenuList>
-        </Col>
-        <Col sm={{ span: 8, offset: 2 }} xs={24}>
-          <Row type="flex" align="middle" justify="center">
-            <NetworkIndicator {...networkIndicatorProps} />
-            <NetworkMenu {...networkMenuProps} />
-          </Row>
-        </Col>
-      </Row >
     </HeaderWrapped >
   );
 }

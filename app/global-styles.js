@@ -6,9 +6,6 @@ injectGlobal`
   body {
     height: 100%;
     width: 100%;
-  }
-
-  body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
@@ -25,15 +22,15 @@ injectGlobal`
   p,
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
-    line-height: 1.5em;
   }
 
-  body {
-    text-align: center;
-  }
   hr {
     width: 200px;
     text-align:center !important;
     margin: 0 auto !important;
+  }
+
+  header * {
+    display: inline;
   }
 `;
