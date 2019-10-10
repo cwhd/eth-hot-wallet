@@ -109,16 +109,16 @@ function Header(props) {
           <NetworkMenu {...networkMenuProps} />
           <HorizontalMenuList>
             <HorizontalMenuItem>
-              <Link to="https://shopr-list.azurewebsites.net/chat">Chat</Link>              
+              <Link to="/chat">Chat</Link>              
             </HorizontalMenuItem>
             <HorizontalMenuItem>
-              <Link to="https://shopr-list.azurewebsites.net">Lists</Link>
+              <Link to="/lists">Lists</Link>
             </HorizontalMenuItem>
             <HorizontalMenuItem>
-              <Link to="https://shopr-wallet.azurewebsites.net">Wallet</Link>
+              <Link to="/wallet">Wallet</Link>
             </HorizontalMenuItem>
             <HorizontalMenuItem>
-              <Link to="https://shopr-list.azurewebsites.net/settings">Settings</Link>
+              <Link to="/settings">Settings</Link>
             </HorizontalMenuItem>
           </HorizontalMenuList>
     </HeaderWrapped >

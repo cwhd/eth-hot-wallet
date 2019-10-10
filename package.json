@@ -1,6 +1,7 @@
 {
   "name": "eth-hot-wallet",
   "version": "0.6.0",
+  "homepage": ".",
   "description": "Ethereum and ERC20 Hot Wallet",
   "repository": {
     "type": "git",

@@ -5,12 +5,7 @@
 */
 
 import React from 'react';
-import { github } from 'utils/constants';
-import { Row, Col } from 'antd';
-import styled from 'styled-components';
-
 import { StickyFooter } from './sticky';
-
 
 const Footer = StickyFooter.extend`
   textAlign: center;
